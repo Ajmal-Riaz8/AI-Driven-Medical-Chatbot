@@ -2,7 +2,6 @@
 
 HealthBot is an AI-powered medical assistant designed to provide **instant healthcare support** through intelligent symptom analysis, first-aid guidance, emergency awareness, and basic skin-disease classification. It was developed to address healthcare accessibility challenges in regions like **Pakistan**, where medical resources are often limited and people struggle to receive timely, reliable medical advice.
 
----
 
  **Why HealthBot?**
 
@@ -15,13 +14,11 @@ In many areas, especially underserved communities, people face:
 
 **HealthBot bridges this gap** by offering fast, AI-generated medical responses that help users make safe, informed decisions—without needing to physically visit a hospital.
 
----
 
  **How HealthBot Works**
 
 HealthBot supports **two types of inputs**:
 
----
 
  **1. Text-Based Medical Queries (RAG + LLaMA)**
 
@@ -34,16 +31,14 @@ When users describe symptoms or ask health-related questions:
 
 This ensures responses are fast, reliable, and grounded in real medical content.
 
----
 
-] **2. Image-Based Skin Disease Detection (CNN)**
+ **2. Image-Based Skin Disease Detection (CNN)**
 
 Users can upload images of visible skin conditions.
 HealthBot uses a **TensorFlow-based Convolutional Neural Network (CNN)** to classify the condition and provide appropriate guidance.
 
 This dual-input design allows the chatbot to support a wide range of healthcare concerns.
 
----
 
  **Technology Stack**
 
@@ -62,7 +57,6 @@ This dual-input design allows the chatbot to support a wide range of healthcare 
 * CSS
 * JavaScript
 
----
 
  **Performance & Safety Features**
 
@@ -72,7 +66,6 @@ This dual-input design allows the chatbot to support a wide range of healthcare 
 * Minimizes misinformation by relying on trusted medical content
 * Reduces non-urgent hospital visits by providing instant digital support
 
----
 
  **Future Enhancements**
 
@@ -84,14 +77,12 @@ Planned features include:
 * Real-time telemedicine integration
 * Connecting users with local hospitals or pharmacies
 
----
 
  **Full Project Download (Google Drive)**
 
  **Google Drive Link:**
-https://drive.google.com/drive/folders/17Uq_jlajg88a8cpL20JJBDC1LSwhVgbK?usp=sharing
+  https://drive.google.com/drive/folders/17Uq_jlajg88a8cpL20JJBDC1LSwhVgbK?usp=sharing
 
----
 
   **Repository Structure (GitHub Version)**
 
