@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Medical Chatbot</title>
+    {% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">{% endblock %}
+    <script src="script.js" defer></script>
+</head>
+<body class="fade-in">
+    <div class="chatbot-container">
+        <h1 class="chatbot-title">AI Medical Chatbot</h1>
+        <p class="chatbot-subtitle">Ask any medical question and get answers from our AI-powered assistant.</p>
+        
+        <div class="chat-window">
+            <label for="user-input">Input Prompt</label>
+            <textarea id="user-input" placeholder="Type your medical question here..."></textarea>
+            
+            <button id="ask-btn">Ask Me</button>
+            
+            <label for="response">Answer</label>
+            <textarea id="response" readonly></textarea>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Exo', sans-serif;
+    background: url('https://media.licdn.com/dms/image/v2/D5612AQFBMgY86lh4ag/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1674695831607?e=2147483647&v=beta&t=uyWTDuXqChnKIUmlQVTiZ53HsZaxT3XQbiIifJgQw20') no-repeat center center/cover;
+    color: white;
+    overflow-x: hidden;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    animation: fadeInAnimation 1.5s ease-in forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.chatbot-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.chatbot-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 2px 2px 15px rgba(255, 215, 0, 0.8);
+}
+
+.chatbot-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #FFD700;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #FFD700;
+    resize: none;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    outline: none;
+}
+
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+button#ask-btn {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #FFD700;
+    border: none;
+    border-radius: 30px;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.6);
+}
+
+button#ask-btn:hover {
+    background: #FFC107;
+    transform: scale(1.05);
+}
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ask-btn").addEventListener("click", function() {
+            let userQuestion = document.getElementById("user-input").value.trim();
+    
+            if (userQuestion === "") {
+                alert("Please enter a question.");
+                return;
+            }
+    
+            fetch("/get_answer", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ question: userQuestion })
+            })
+            .then(response => response.json())
+            .then(data => {
+                let responseField = document.getElementById("response");
+                if (data.answer) {
+                    responseField.value = data.answer; // Display the answer in response textarea
+                } else {
+                    responseField.value = "Sorry, no response found.";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching the answer:", error);
+                document.getElementById("response").value = "Error fetching the answer. Please try again.";
+            });
+        });
+    });
+    </script>
+    

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDICAL CHATBOT - AI HEALTHCARE ASSISTANT</title>
+    {% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">{% endblock %}
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="loader"></div>
+        <h2 class="loader-text">MEDICAL <span class="highlight">CHATBOT</span></h2>
+        <p class="loading-text">LOADING...</p>
+    </div>
+
+    <div class="main-content">
+        <header class="hero">
+            <div class="text-content">
+                <h1 class="animate-text">MEET <span class="highlight glow">HEALTHBOT</span></h1>
+                <p class="animate-text">YOUR AI-POWERED HEALTHCARE ASSISTANT</p>
+                <a href="/chat" class="btn-start">START CHAT</a>
+                <a href="/detection" class="btn-start">Skin Cancer Detection</a>
+            </div>
+        </header>
+    </div>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        document.querySelector(".preloader").classList.add("hidden");
+        document.querySelector(".main-content").classList.add("loaded");
+    }, 2000); // Adjust timing to match your loading animation
+});
+
+    </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".btn-start").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent instant navigation
+
+        // Create a div for the peeling effect
+        let peelEffect = document.createElement("div");
+        peelEffect.classList.add("peel-off");
+        document.body.appendChild(peelEffect);
+
+        // Wait for the animation to finish before navigating
+        setTimeout(() => {
+            window.location.href = this.getAttribute("href"); // Navigate after animation
+        }, 800); // Duration should match CSS animation time
+    });
+});
+</script>
+
+</body>
+        
+
+</html>
